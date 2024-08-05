@@ -5,7 +5,9 @@
     <!-- The card contains the first painting of the gallery -->
     <img src="/images/{{paintings.[0].filename}}" alt="{{paintings.[0].description}}">
   </a> --}}
-  <div> {{title}} </div>
+  <div class="card"> 
+  <header> {{title}} </header>
   <div>{{content}}</div>
-  <div>{{user}} {{username}} </div>  {{!-- Dont work, I want to access this property--}}
+  <div>{{username}} </div>  {{!-- Dont work, I want to access this property--}}
+</div>
 </section>

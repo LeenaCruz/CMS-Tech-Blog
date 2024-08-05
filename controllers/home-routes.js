@@ -27,6 +27,37 @@ router.get('/', async (req, res) => {
     // res.render('homepage', {blogPosts});
 });
 
+router.get('/dashboard', async (req, res) => {
+    try {
+        const BlogPostData = await BlogPost.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        });
+        const blogPosts = BlogPostData.map((blogpost) => blogpost.get({plain: true}));
+        res.render('dashboard', {blogPosts});
+
+    } catch(err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+    // const blogPostData = await BlogPost.findAll().catch((err) => {
+    //     res.json(err);
+    // });
+    // const blogPosts = blogPostData.map((blogpost) => blogpost.get({plain: true}));
+    // res.render('homepage', {blogPosts});
+});
+
+
+
+
+
+
+
+
 // Login route
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect to the homepage
@@ -37,5 +68,7 @@ router.get('/login', (req, res) => {
     // Otherwise, render the 'login' template
     res.render('login');
   });
+
+  
   
 module.exports = router;

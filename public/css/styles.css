@@ -1,10 +1,10 @@
 :root {
-    --primary: #3d5852;
-    --secondary: #86938f;
-    --tertiary: #5e877f;
-    --quatrinary: #6c6b67;
+    --primary: #2364AA;
+    --secondary: #3DA5D9;
+    --tertiary: #73BFB8;
+    --quatrinary: #6c61a1;
     --light: #e3e4e3;
-    --dark: #182c23;
+    --dark: #20182c;
     --error: rgb(228, 46, 1);
     --border-radius: 0.3rem;
   }
@@ -34,7 +34,20 @@
     background: var(--primary);
     color: var(--light);
   }
-  
+
+   header h1 {
+    color: var(--dark);
+   }
+   li {
+    display: inline;
+   }
+   /* li a {
+color: var(--dark);
+text-align: center;
+text-decoration: none;
+justify-content: space-between;
+   } */
+
   main {
     display: flex;
     flex-wrap: wrap;
@@ -51,12 +64,15 @@
   
   nav {
     display: flex;
+    flex-direction: column;
     background-color: var(--secondary);
+    justify-content: center;
+    text-align: center;
   }
   
   nav a {
-    color: var(--light);
-    padding: 14px 20px;
+    color: var(--dark);
+    padding: 10px 20px;
     text-decoration: none;
     text-align: center;
   }
@@ -66,6 +82,14 @@
     background-color: var(--dark);
   }
   
+  nav ul li {
+display: inline-block;
+padding: 10px;
+margin-top: 10px;
+  }
+  footer {
+    background-color: var(--secondary)
+  }
   .gallery {
     flex: 4;
     background-color: #fff;
@@ -129,7 +153,7 @@
   }
   
   .card header {
-    color: var(--light);
+    color: var(--dark);
     font-weight: bold;
     text-transform: uppercase;
     margin: 0;
