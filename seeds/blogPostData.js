@@ -2,7 +2,7 @@ const {BlogPost} = require('../models');
 
 const blogPostData = [
     {
-        title: 'Leena',
+        title: 'Cancion de Luna',
         content: 'Luna Lunita Lunera',
         date_created: 'April 20, 2021 07:00:00',
     },

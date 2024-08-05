@@ -1,12 +1,22 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const session =require('express-session');
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 // Sets up the Express App 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Set up sessions
+const sess = {
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+};
+
+app.use(session(sess));
 
 const hbs = exphbs.create({});
 //Set Handlebars as the default template engine.
