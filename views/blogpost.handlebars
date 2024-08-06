@@ -3,9 +3,13 @@
     <header> {{blogPost.title}} </header>
     <div>{{blogPost.content}}</div>
     <div>{{user.username}} </div>
-    <div>{{blogPost.date_created}}</div>
+    <div>{{format_date blogPost.date_created}}</div>
 </div>
 <div class="container">
-<button class="btn btn-primary" type="submit"> Comment</button>
+<button class="btn btn-primary" type="submit">Comment</button>
 </div>
 
+{{!-- Try how to return the values of post , missing a href /comment on button above--}}
+{{!-- {{#if viewComments}}
+<span> TEST </span>
+{{/if}} --}}
