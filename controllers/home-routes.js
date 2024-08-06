@@ -53,11 +53,6 @@ router.get('/dashboard', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     } 
-    // const blogPostData = await BlogPost.findAll().catch((err) => {
-    //     res.json(err);
-    // });
-    // const blogPosts = blogPostData.map((blogpost) => blogpost.get({plain: true}));
-    // res.render('homepage', {blogPosts});
 }else{
     res.redirect("/login");
 }
@@ -65,13 +60,28 @@ router.get('/dashboard', async (req, res) => {
 
 
 //Get Create BlogPost Form
-router.get('/blogpost', async (req, res) => {
-    res.render('blogpost', {
+router.get('/blogpostform', async (req, res) => {
+    res.render('blogpostform', {
         loggedIn: req.session.loggedIn
     });
 });
 
 
+
+// Get one blogpost
+router.get('/blogpost/:id', async (req, res) => {
+    console.log(req.params.id);
+    try {
+      const BlogPostData = await BlogPost.findByPk(req.params.id);
+  
+      const blogPost = BlogPostData.get({ plain: true });
+      // Send over the 'loggedIn' session variable to the 'homepage' template
+      res.render('blogpost', { blogPost, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
 
 
 
