@@ -37,14 +37,14 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword =  dbUserData.checkPassword(req.body.password);
 
-    // if (!validPassword) {
-    //   res
-    //     .status(400)
-    //     .json({ message: 'Incorrect username or password. Please try again!' });
-    //   return;
-    // }
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect username or password. Please try again!' });
+      return;
+    }
 
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
@@ -71,5 +71,10 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
+
+
+
 
 module.exports = router;

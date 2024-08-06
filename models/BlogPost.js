@@ -21,6 +21,7 @@ content: {
 },
 date_created: {
     type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
     allowNull: false,
 }, 
 user_id: {

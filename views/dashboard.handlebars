@@ -1,6 +1,12 @@
-<h2>SOY EL DASHBOARD</h2> 
+<div> <h2>SOY EL DASHBOARD</h2> </div>
+<div>
 {{#each blogPosts as |blogpost|}}
 {{> blogpost_details}}
 {{/each}}
-</section>
+<div class="form-group">
+        <button class="btn btn-primary" type="submit"><a href="/blogpost">Create Post</a></button>
+      </div>
+</div>
+
+
 

@@ -13,10 +13,10 @@ router.get('/', async (req, res) => {
                 },
             ],
         });
-        const blogPosts = BlogPostData.map((blogpost) => blogpost.get({plain: true}));
-        res.render('homepage', {blogPosts});
+        const blogPosts = BlogPostData.map((blogpost) => blogpost.get({ plain: true }));
+        res.render('homepage', { blogPosts });
 
-    } catch(err) {
+    } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
@@ -36,11 +36,15 @@ router.get('/dashboard', async (req, res) => {
                     attributes: ['username'],
                 },
             ],
+            where: {
+                user_id: req.session.user_id
+            }
         });
-        const blogPosts = BlogPostData.map((blogpost) => blogpost.get({plain: true}));
-        res.render('dashboard', {blogPosts});
+        const blogPosts = BlogPostData.map((blogpost) => blogpost.get({ plain: true }));
+       console.log(blogPosts);
+        res.render('dashboard', { blogPosts });
 
-    } catch(err) {
+    } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
@@ -51,7 +55,25 @@ router.get('/dashboard', async (req, res) => {
     // res.render('homepage', {blogPosts});
 });
 
+router.get('/blogpost', async (req, res) => {
 
+    // I want to search all the blogpost from the user, the blogpost references user_id
+    // try {
+    //     const BlogPostData = await BlogPost.findAll({
+    //         include: [
+    //             {
+    //                 model: User,
+    //                 attributes: ['id', 'username']
+    //             }
+    //         ]
+    //     }); const blogPosts = BlogPostData.map((blogpost) => blogpost.get({ plain: true }));
+    //     res.render('blogspot', { blogPosts });
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(500).json(err);
+    // }
+    res.render('blogpost');
+});
 
 
 
@@ -62,22 +84,22 @@ router.get('/dashboard', async (req, res) => {
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect to the homepage
     if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
+        res.redirect('/');
+        return;
     }
     // Otherwise, render the 'login' template
     res.render('login');
-  });
+});
 
 
-  router.get('/signup', (req,res) => {
+router.get('/signup', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
         return;
-      }
-      // Otherwise, render the 'login' template
-      res.render('signup');
-    });
-  
+    }
+    // Otherwise, render the 'login' template
+    res.render('signup');
+});
+
 
 module.exports = router;
