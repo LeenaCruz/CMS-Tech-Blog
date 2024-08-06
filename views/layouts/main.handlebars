@@ -17,12 +17,21 @@
         <ul>
             <li> <a href='/'>Home </a> </li>
             <li> <a href='/dashboard'> Dashboard</a></li>
-            <li><a href='/login'>Login</a></li>
-            <li id="logout"> <a href="/">Logout</a></li>
+            {{!-- <li><a href='/login'>Login</a></li>
+            <li id="logout"> <a href="/">Logout</a></li> --}}
+            {{#if loggedIn}}
+            <li> <a href="/" id="logout">Logout</a></li>
+            {{else}}
+            <!-- Otherwise, show a link to login -->
+            <li><a href="/login">Login</a> </li>
+            {{/if}}
         </ul>
     </nav>
     <main> {{{body}}} </main>
     <footer>Made with &#x1F49C by Leena Cruz</footer>
+    {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
