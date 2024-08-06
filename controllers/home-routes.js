@@ -40,8 +40,10 @@ router.get('/dashboard', async (req, res) => {
                 user_id: req.session.user_id
             }
         });
+        console.log(req.session.user_id)
         const blogPosts = BlogPostData.map((blogpost) => blogpost.get({ plain: true }));
        console.log(blogPosts);
+     
         res.render('dashboard', { 
             blogPosts,
             loggedIn: req.session.loggedIn
@@ -64,7 +66,9 @@ router.get('/dashboard', async (req, res) => {
 
 //Get Create BlogPost Form
 router.get('/blogpost', async (req, res) => {
-    res.render('blogpost');
+    res.render('blogpost', {
+        loggedIn: req.session.loggedIn
+    });
 });
 
 

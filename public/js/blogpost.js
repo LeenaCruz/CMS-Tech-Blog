@@ -3,17 +3,23 @@ const blogPostFormHandler = async (event) => {
 
     const title = document.querySelector('#title').value
     const content = document.querySelector('#content').value
-console.log(title)
 
-   fetch('/api/blog', {
+
+    const response = await fetch('/api/blog', {
         method: 'POST',
-        body: JSON.stringify({title, content}),
-        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ title, content }),
+        headers: { 'Content-Type': 'application/json' },
     });
 
-    // alert user somehow
+    // alert user of success or fails
+    if (response.ok) {
+        alert('Succesfully posted!')
+        document.location.replace('/dashboard')
+    } else {
+        alert('Failed to create post :(')
+    }
 }
 
 document
-.querySelector('.blogpost-form')
-.addEventListener('submit', blogPostFormHandler);
+    .querySelector('.blogpost-form')
+    .addEventListener('submit', blogPostFormHandler);

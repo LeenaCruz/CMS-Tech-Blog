@@ -1,4 +1,4 @@
-{{!-- {{#if loggedIn}} --}}
+{{#if loggedIn}}
 <div>
     {{#each blogPosts as |blogpost|}}
     {{> blogpost_details}}
@@ -7,9 +7,9 @@
         <button class="btn btn-primary" type="submit"><a href="/blogpost">Create Post</a></button>
     </div>
 </div>
-{{!-- {{else}}
+{{else}}
 <p>Please log in to view your dashboard.</p>
 <div>
     <a href="/login">Login Here</a>
 </div>
-{{/if}} --}}
+{{/if}}

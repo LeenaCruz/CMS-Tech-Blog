@@ -9,6 +9,7 @@ router.post('/', async (req, res) => {
             title: req.body.title,
             content: req.body.content,
             date_created: Date.now(),
+            user_id: req.session.user_id
         });
         res.status(200).json(dbBlogPostData);
     }catch(err) {

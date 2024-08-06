@@ -4,12 +4,12 @@ const userData = [
     {
         id: 1,
         username: 'LeenaCruz',
-        password: '123456'
+        password: '$2a$10$HBjjYNU3cQmHINrn4vtXHeCCR6fwT8qpdNdtdC5Uqu7L/Xqc/FpHi'
     },
     {
        id: 2,
         username: 'Ekutoru',
-        password: '12345534'
+        password: '$2a$10$.pF3BrTJ6DSaCYdPhTT0I.Ps8vCcJtm.YzsYpePhrEDpllTOqBRNW'
     },
 ];
 
