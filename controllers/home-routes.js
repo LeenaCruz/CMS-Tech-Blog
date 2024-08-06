@@ -14,20 +14,20 @@ router.get('/', async (req, res) => {
             ],
         });
         const blogPosts = BlogPostData.map((blogpost) => blogpost.get({ plain: true }));
-        res.render('homepage', { blogPosts });
+        res.render('homepage', { 
+            blogPosts,
+            loggedIn: req.session.loggedIn
+         });
 
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
-    // const blogPostData = await BlogPost.findAll().catch((err) => {
-    //     res.json(err);
-    // });
-    // const blogPosts = blogPostData.map((blogpost) => blogpost.get({plain: true}));
-    // res.render('homepage', {blogPosts});
+
 });
 
 router.get('/dashboard', async (req, res) => {
+    if(req.session.loggedIn) {
     try {
         const BlogPostData = await BlogPost.findAll({
             include: [
@@ -42,36 +42,28 @@ router.get('/dashboard', async (req, res) => {
         });
         const blogPosts = BlogPostData.map((blogpost) => blogpost.get({ plain: true }));
        console.log(blogPosts);
-        res.render('dashboard', { blogPosts });
+        res.render('dashboard', { 
+            blogPosts,
+            loggedIn: req.session.loggedIn
+         });
 
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
-    }
+    } 
     // const blogPostData = await BlogPost.findAll().catch((err) => {
     //     res.json(err);
     // });
     // const blogPosts = blogPostData.map((blogpost) => blogpost.get({plain: true}));
     // res.render('homepage', {blogPosts});
+}else{
+    res.redirect("/login");
+}
 });
 
-router.get('/blogpost', async (req, res) => {
 
-    // I want to search all the blogpost from the user, the blogpost references user_id
-    // try {
-    //     const BlogPostData = await BlogPost.findAll({
-    //         include: [
-    //             {
-    //                 model: User,
-    //                 attributes: ['id', 'username']
-    //             }
-    //         ]
-    //     }); const blogPosts = BlogPostData.map((blogpost) => blogpost.get({ plain: true }));
-    //     res.render('blogspot', { blogPosts });
-    // } catch (err) {
-    //     console.log(err);
-    //     res.status(500).json(err);
-    // }
+//Get Create BlogPost Form
+router.get('/blogpost', async (req, res) => {
     res.render('blogpost');
 });
 
