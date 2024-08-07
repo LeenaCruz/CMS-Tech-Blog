@@ -65,6 +65,7 @@ router.get('/blogpostform', async (req, res) => {
         loggedIn: req.session.loggedIn
     });
 });
+
 //Comments - variable
 router.get('/comment', async (req, res) => {
     res.render('blogpost', {
@@ -89,8 +90,6 @@ router.get('/blogpost/:id', async (req, res) => {
   });
 
 
-
-
 // Login route
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect to the homepage
@@ -101,7 +100,6 @@ router.get('/login', (req, res) => {
     // Otherwise, render the 'login' template
     res.render('login');
 });
-
 
 router.get('/signup', (req, res) => {
     if (req.session.loggedIn) {

@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
+
+//Code for local connection
 // const sequelize = process.env.DB_URL
 // ? new Sequelize (process.env.DB_URL)
 // : new Sequelize (
@@ -13,6 +15,7 @@ require('dotenv').config();
 //     }
 //   );
 
+//Code for Render connection
 let sequelize;
 
 if (process.env.DB_URL) {
