@@ -1,15 +1,17 @@
-<section> 
-     {{!-- <a href="/gallery/{{id}}">
+<section>
+  {{!-- <a href="/gallery/{{id}}">
     <!-- The card contains the gallery name as the card header -->
     <header>{{name}}</header>
     <!-- The card contains the first painting of the gallery -->
     <img src="/images/{{paintings.[0].filename}}" alt="{{paintings.[0].description}}">
   </a> --}}
-  <div class="card"> 
-  <a href="/blogpost/{{id}}">
-  <header> {{title}} </header>
-  <div>{{content}}</div>
-  <div>{{user.username}} </div>  
-  </a>
-</div>
+  <div class="card">
+    <div class=".blogpost-details">
+      <a href="/blogpost/{{id}}">
+        <header> {{title}} </header>
+        <p>{{content}}</p>
+        <p>{{user.username}} </p>
+      </a>
+    </div>
+  </div>
 </section>
