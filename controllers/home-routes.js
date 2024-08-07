@@ -67,12 +67,12 @@ router.get('/blogpostform', async (req, res) => {
 });
 
 //Comments - variable
-router.get('/comment', async (req, res) => {
-    res.render('blogpost', {
-        loggedIn: req.session.loggedIn,
-        viewComments: true,
-    });
-});
+// router.get('/comment', async (req, res) => {
+//     res.render('blogpost', {
+//         loggedIn: req.session.loggedIn,
+//         viewComments: true,
+//     });
+// });
 
 // Get one blogpost
 router.get('/blogpost/:id', async (req, res) => {

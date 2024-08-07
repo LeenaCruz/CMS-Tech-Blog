@@ -1,14 +1,16 @@
 
 <div class="card">
-    <div class=".blogpost-details">
+    <div class="blogpost-details">
     <header> {{blogPost.title}} </header>
     <p>{{blogPost.content}}</p>
     <p>{{user.username}} <p>
     <p>{{format_date blogPost.date_created}}</p>
     </div>
 </div>
-<div class="container">
-<button class="btn btn-primary" type="submit">Comment</button>
+<form class=" form comment-form">
+    <h2 class="page-title">Comment</h2>
+    <input class="form-input" type="text" id="content" />
+<button class="btn btn-primary" type="submit">Submit</button>
 </div>
 
 {{!-- Try how to return the values of post , missing a href /comment on button above--}}
@@ -17,3 +19,4 @@
 {{/if}} --}}
 
 {{!-- Have the form hidden and toggle on my button (event listener, that hide of show ) when comment button click --}}
+<script src="/js/comment.js"></script>
